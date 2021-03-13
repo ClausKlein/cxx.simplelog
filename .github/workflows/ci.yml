@@ -53,12 +53,15 @@ jobs:
       - name: Install
         run: cmake --install build --config Release --prefix stage
 
-      - name: TestInstalledVersion
+      - name: BuildWithInstalledVersion
         shell: bash
         run: |
           cmake -S examples -B build/test -D CMAKE_PREFIX_PATH=$PWD/stage -D CMAKE_EXPORT_COMPILE_COMMANDS=1
           cmake --build build/test --config Release -j 4
-          cmake --build build/test --config Release --target test
+
+      - name: TestWithInstalledVersion
+        working-directory: build/test
+        run: ctest -C Release --output-on-failure
 
       - name: Run clang-tidy on MacOS Host
         if: startsWith(matrix.os, 'macos')

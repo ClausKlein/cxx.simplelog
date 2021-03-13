@@ -13,7 +13,7 @@ export CPM_USE_LOCAL_PACKAGES=0
 export CPM_SOURCE_CACHE=${HOME}/.cache/CPM
 
 PROJECT_NAME:=$(shell basename $(CURDIR))
-BUILD_DIR?=../.build-$(PROJECT_NAME)-$(CXX)-$(BUILD_TYPE)
+BUILD_DIR?=../build-$(PROJECT_NAME)-$(CXX)-$(BUILD_TYPE)
 
 .PHONY: update format all test examples check clean distclean
 
