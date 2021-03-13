@@ -13,7 +13,7 @@ jobs:
       fail-fast: false
 
       matrix:
-        type: static  # [static, shared]
+        type: [static]
 
         os: [macos, ubuntu, windows]
 
